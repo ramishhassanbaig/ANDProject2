@@ -8,6 +8,8 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+    MovieAdapter movieAdapter;
+    Network network;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerview);
+
+        network = new Network();
 
 
     }
