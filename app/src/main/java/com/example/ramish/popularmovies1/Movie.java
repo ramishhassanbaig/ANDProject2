@@ -1,8 +1,9 @@
 package com.example.ramish.popularmovies1;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Movie {
+public class Movie implements Serializable {
 
     private Double popularity;
     private Integer voteCount;

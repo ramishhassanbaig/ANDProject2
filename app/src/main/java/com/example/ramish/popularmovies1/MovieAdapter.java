@@ -1,11 +1,16 @@
 package com.example.ramish.popularmovies1;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -17,6 +22,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     private ItemSelectedListener itemSelectedListener;
     private ArrayList<Movie> movieArrayList;
+    private Context context;
+
+    public MovieAdapter(Context context, ArrayList<Movie> movieArrayList) {
+        this.context = context;
+        this.movieArrayList = movieArrayList;
+    }
 
     @NonNull
     @Override
@@ -28,9 +39,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Movie movie = movieArrayList.get(position);
+        final Movie movie = movieArrayList.get(position);
 
         holder.title_tv.setText(movie.getTitle());
+
+        try {
+            GlideApp.with(context).asBitmap().load(new URL(movie.getPosterPath())).centerCrop().into(holder.post_img);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemSelectedListener.onItemClicked(movie);
+            }
+        });
     }
 
     @Override
