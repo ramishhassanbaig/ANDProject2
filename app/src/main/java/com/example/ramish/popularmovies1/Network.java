@@ -23,7 +23,7 @@ public class Network {
 
     public static String BASE_URL = "http://api.themoviedb.org/3/movie/";
     public static String BASE_IMAGE_URL = " http://image.tmdb.org/t/p/w500";
-    public static String API_KEY = "48054a8ff45cdf14d8cd39bf5f4fd38b";
+    public static String API_KEY = "MY_API_KEY";
     public static String POPULAR_MOVIES = "popular";
     public static String TOP_RATED_MOVIES = "top_rated";
 
